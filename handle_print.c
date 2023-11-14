@@ -1,26 +1,26 @@
 #include "main.h"
 /**
- * handle_print - Prints an argument based on its type
- * @fmt: Formatted string in which to print the arguments.
- * @list: List of arguments to be printed.
- * @ind: ind.
- * @buffer: Buffer array to handle print.
- * @flags: Calculates active flags
- * @width: get width.
- * @precision: Precision specification
- * @size: Size specifier
- * Return: 1 or 2;
+ * handle_p - Prints an argument
+ * @fmt: arguments.
+ * @list:arguments.
+ * @ind: index.
+ * @buffer: Buffer array.
+ * @flags: active flags
+ * @width: width.
+ * @precision: specification
+ * @size: specifier size
+ * Return: 1 on success;
  */
-int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
+int handle_p(const char *fmt, int *ind, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int i, unknow_len = 0, printed_chars = -1;
 	fmt_t fmt_types[] = {
-		{'c', print_char}, {'s', print_string}, {'%', print_percent},
-		{'i', print_int}, {'d', print_int}, {'b', print_binary},
-		{'u', print_unsigned}, {'o', print_octal}, {'x', print_hexadecimal},
-		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
-		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
+		{'c', p_char}, {'s', p_string}, {'%', p_percent},
+		{'i', p_int}, {'d', p_int}, {'b', p_binary},
+		{'u', p_unsigned}, {'o', p_octal}, {'x', p_hexadecimal},
+		{'X', p_hexa_upper}, {'p', p_pointer}, {'S', p_non_printable},
+		{'r', p_reverse}, {'R', p_rot13string}, {'\0', NULL}
 	};
 	for (i = 0; fmt_types[i].fmt != '\0'; i++)
 		if (fmt[*ind] == fmt_types[i].fmt)

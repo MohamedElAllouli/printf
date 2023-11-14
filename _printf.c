@@ -42,12 +42,12 @@ int _printf(const char *format, ...)
 		else
 		{
 			p_buffer(buffer, &ind_buf);
-			f = get_flags(format, &i);
-			w = get_width(format, &i, list);
-			pr = get_precision(format, &i, list);
-			s = get_size(format, &i);
+			f = g_flags(format, &i);
+			w = g_width(format, &i, list);
+			pr = g_precision(format, &i, list);
+			s = g_size(format, &i);
 			++i;
-			p = handle_print(format, &i, list, buffer,
+			p = handle_p(format, &i, list, buffer,
 				f, w, pr, s);
 			if (p == -1)
 				return (-1);
